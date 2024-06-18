@@ -1,0 +1,17 @@
+/* src/index.css */
+
+/* Reset styles */
+body, html, #root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  /* Basic styles for input[type="file"] */
+  input[type="file"] {
+    margin: 10px;
+    padding: 5px;
+    font-size: 16px;
+  }
+  
+  
