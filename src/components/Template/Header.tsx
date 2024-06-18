@@ -17,6 +17,9 @@ const Header = () => {
           <li>
             <Link to="/test-video">Test-video</Link>
           </li>
+          <li>
+            <Link to="/test-ia-video">Test-ia-video</Link>
+          </li>
         </ul>
       </nav>
     </>

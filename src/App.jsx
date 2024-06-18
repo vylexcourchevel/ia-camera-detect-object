@@ -5,6 +5,7 @@ import TestVideo from "./components/TestVideo/TestVideo";
 import TestIA from "./components/TestIA/TestIA";
 import TestIndexesDB from "./components/TestIndexesDB/TestIndexesDB";
 import HomePage from "./pages/PageHome";
+import TestIAVideo from "./components/TestIA/TestIAVideo";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/test-ia" element={<TestIA />} />
         <Route path="/test-stockage" element={<TestIndexesDB />} />
         <Route path="/test-video" element={<TestVideo />} />
+        <Route path="/test-ia-video" element={<TestIAVideo />} />
       </Route>
     </Routes>
   );
