@@ -30,3 +30,11 @@ export const clearItems = async () => {
   await store.clear();
   await tx.done;
 };
+
+export const deleteItem = async (id) => {
+  const db = await dbPromise;
+  const tx = db.transaction('items', 'readwrite');
+  const store = tx.objectStore('items');
+  await store.delete(id);
+  await tx.done;
+};

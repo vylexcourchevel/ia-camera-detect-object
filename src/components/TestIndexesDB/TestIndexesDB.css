@@ -1,0 +1,82 @@
+h1 {
+  text-align: center;
+  color: var(--text-color);
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input[type="file"],
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid var(--input-border-color);
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--bg-color-header);
+  color: var(--main-background-color);
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--accent-color);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.item {
+  padding: 15px;
+  border: 1px solid var(--input-border-color);
+  border-radius: 8px;
+  background-color: var(--main-background-color);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.item h3 {
+  margin-top: 0;
+  color: var(--border);
+  text-align: center;
+}
+
+.item p {
+  text-align: center;
+}
+
+.item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 0 auto;
+}
+
+.delete_button {
+  display: block;
+  width: fit-content;
+  margin: 10px auto 0;
+  padding: 8px 16px;
+  background-color: var(--bg-color-header);
+  color: var(--main-background-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
