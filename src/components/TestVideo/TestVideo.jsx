@@ -100,18 +100,18 @@ function TestVideo() {
 
       <h1>Test Capture Video WebRTC</h1>
 
-      <div class="contentarea">
+      <div className="contentarea">
 
         <p>This example demonstrates how to set up a media stream using your built-in webcam, fetch an image from that stream, and create a PNG using that image.</p>
 
-        <div class="camera">
+        <div className="camera">
           <video id="video">Video stream not available.</video>
           <button id="startbutton">Take photo</button> 
         </div>
 
         <canvas id="canvas"></canvas>
 
-        <div class="output">
+        <div className="output">
           <img id="photo" alt="The screen capture will appear in this box." />
         </div>
 
