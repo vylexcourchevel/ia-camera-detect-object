@@ -1,0 +1,30 @@
+.videos {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+
+  .camera, .detection {
+    video, canvas {
+      width: 320px;
+      height: 240px;
+      background-color: black;
+    }
+  }
+}
+
+.store {
+  margin-top: 32px;
+  .item {
+    display: flex;
+    gap: 16px;
+    padding: 8px;
+    justify-content: start;
+    align-items: center;
+    img {
+      max-height: 256px;
+    }
+    p {
+      font-size: 28px;
+    }
+  }
+}
