@@ -1,0 +1,31 @@
+.footer {
+  background-color: var(--bg-color-header);
+  color: var(--main-background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.footer_text {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.footer_link {
+  display: flex;
+  align-items: center;
+  color: var(--main-background-color);
+  text-decoration: none;
+}
+
+.footer_icon {
+  margin-left: 8px;
+}
+
+.footer_name {
+  font-weight: bold;
+}

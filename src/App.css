@@ -1,42 +1,112 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+:root {
+  font-size: 1rem;
+}
+:root {
+  --text-color: #212121;
+  --bg-color-header:  #BF2995;
+  --accent-color: #F5721F;
+  --accent-color-hover: #E91363;
+  --main-background-color: #ffffff;
+  --frame-background-color: #f5f4fa;
+  --border-color: #ececec;
+  --border: #afb1b8;
+  --input-coor: rgba(33, 33, 33, 0.2);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style: none;
+}
+@media screen and (min-width: 480px) {
+  .container {
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    width: 480px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .containe {
+    width: 1200px;
+  }
+}
+
+.section {
+  padding: 20px;
   text-align: center;
 }
+.padding {
+  padding: 10px;
+}
+@media screen and (min-width: 768px) {
+  .tablet {
+    display: none;
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+    display: block;
   }
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media screen and (min-width: 768px) {
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
-
-.card {
-  padding: 2em;
+body {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  background-color: var(--main-background-color);
+  color: var(--text-color);
+}
+h1,
+h2,
+h3 {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+}
+header {
+  border-bottom: 1px solid var(--border-color);
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
 
-.read-the-docs {
-  color: #888;
-}
+
