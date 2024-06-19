@@ -4,17 +4,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: auto;
   padding: 20px;
-  position: fixed;
   width: 100%;
   bottom: 0;
 }
-
+@media (max-width: 480px) {
+  .footer {
+    display: block;
+    text-align: center;
+  }
+}
 .footer_text {
   margin-right: 10px;
   font-size: 18px;
 }
-
+@media (max-width: 480px) {
+  .footer_list {
+    margin-top: 15px;
+  }
+}
 .footer_link {
   display: flex;
   align-items: center;

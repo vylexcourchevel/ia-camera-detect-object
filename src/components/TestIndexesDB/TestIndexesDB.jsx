@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
-import { addItem, getItems, clearItems } from '../../db.js';
+import { useState, useEffect } from "react";
+import { addItem, getItems, clearItems, deleteItem } from "../../db.js";
+import "./TestIndexesDB.css";
 
 const TestIndexesDB = () => {
   const [items, setItems] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
-  const [textValue, setTextValue] = useState('');
+  const [textValue, setTextValue] = useState("");
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -19,7 +20,7 @@ const TestIndexesDB = () => {
   };
 
   const handleAddItem = async () => {
-    if (!selectedFile || textValue.trim() === '') return;
+    if (!selectedFile || textValue.trim() === "") return;
 
     const reader = new FileReader();
     reader.onload = async (event) => {
@@ -27,13 +28,13 @@ const TestIndexesDB = () => {
         image: event.target.result,
         text: textValue,
         name: selectedFile.name,
-        type: selectedFile.type
+        type: selectedFile.type,
       };
       await addItem(item);
       const allItems = await getItems();
       setItems(allItems);
       setSelectedFile(null);
-      setTextValue('');
+      setTextValue("");
     };
     reader.readAsDataURL(selectedFile);
   };
@@ -43,24 +44,40 @@ const TestIndexesDB = () => {
     setItems([]);
   };
 
+  const handleDeleteItem = async (id) => {
+    await deleteItem(id);
+    const updatedItems = await getItems();
+    setItems(updatedItems);
+  };
+
   return (
-    <div>
+    <div className="container">
       <h1>IndexedDB Image and Text Storage</h1>
-      <input type="file" onChange={handleFileChange} />
-      <input
-        type="text"
-        value={textValue}
-        onChange={(e) => setTextValue(e.target.value)}
-        placeholder="Enter text"
-      />
-      <button onClick={handleAddItem}>Add Item</button>
-      <button onClick={handleClearItems}>Clear Items</button>
-      <div>
+      <div className="input-container">
+        <input type="file" onChange={handleFileChange} />
+        <input
+          type="text"
+          value={textValue}
+          onChange={(e) => setTextValue(e.target.value)}
+          placeholder="Enter text"
+        />
+      </div>
+      <div className="button-container">
+        <button onClick={handleAddItem}>Add Item</button>
+        <button onClick={handleClearItems}>Clear Items</button>
+      </div>
+      <div className="items-container">
         {items.map((item, index) => (
-          <div key={index}>
+          <div key={index} className="item">
             <h3>{item.name}</h3>
             <p>{item.text}</p>
-            <img src={item.image} alt={item.name} style={{ width: '200px' }} />
+            <img src={item.image} alt={item.name} />
+            <button
+              className="delete_button"
+              onClick={() => handleDeleteItem(item.id)}
+            >
+              Delete
+            </button>
           </div>
         ))}
       </div>

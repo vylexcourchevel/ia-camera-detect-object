@@ -1,3 +1,8 @@
+#root{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 :root {
   font-size: 1rem;
 }
@@ -9,6 +14,7 @@
   --main-background-color: #ffffff;
   --frame-background-color: #f5f4fa;
   --border-color: #ececec;
+  --input-border-color: #ccc;
   --border: #afb1b8;
   --input-coor: rgba(33, 33, 33, 0.2);
 }
@@ -36,9 +42,11 @@ li {
 @media screen and (min-width: 480px) {
   .container {
     margin: 0 auto;
-    padding-left: 20px;
-    padding-right: 20px;
-
+    padding: 20px;
+    background-color: var(--main-background-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  
     width: 480px;
   }
 }
