@@ -5,6 +5,8 @@ import * as cocoSsd from "@tensorflow-models/coco-ssd";
 import "@tensorflow/tfjs";
 import { FaTrash } from "react-icons/fa";
 import { ImSpinner } from "react-icons/im";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 const HomePage = () => {
   
@@ -132,6 +134,55 @@ const HomePage = () => {
     const updatedItems = await getItems();
     setItems(updatedItems);
   };
+  const confirmDelete = (id) => {
+    confirmAlert({
+      customUI: ({ onClose }) => {
+        return (
+          <div className="custom-ui"
+          style={{
+            border:"solid 1px",
+            padding:"20px"
+          }}
+          >
+            <h1>Confirm to delete</h1>
+            <p>Are you sure you want to delete this item?</p>
+            <button
+              onClick={() => {
+                handleDeleteItem(id);
+                onClose();
+              }}
+              style={{
+                backgroundColor: "green",
+                color: "white",
+                padding: "10px 20px",
+                margin: "10px",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+            >
+              Yes
+            </button>
+            <button
+              onClick={onClose}
+              style={{
+                backgroundColor: "red",
+                color: "white",
+                padding: "10px 20px",
+                margin: "10px",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+            >
+              No
+            </button>
+          </div>
+        );
+      },
+    });
+  };
+
 
   return (
     <>
@@ -176,9 +227,13 @@ const HomePage = () => {
                   ))}
                 </ul>
                 <FaTrash
-                  onClick={() => handleDeleteItem(item.id)}
+                  onClick={() => confirmDelete(item.id)}
                   size={40}
-                  style={{ cursor: "pointer", color: "#BF2995", marginTop: "10px" }}
+                  style={{
+                    cursor: "pointer",
+                    color: "#BF2995",
+                    marginTop: "10px",
+                  }}
                 />
               </div>
             ))}
