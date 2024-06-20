@@ -1,7 +1,8 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useRef, useEffect } from 'react';
-import * as cocoSsd from '@tensorflow-models/coco-ssd';
-import '@tensorflow/tfjs';
+import React, { useRef, useEffect } from "react";
+import * as cocoSsd from "@tensorflow-models/coco-ssd";
+import "@tensorflow/tfjs";
+import "./ia.css";
 
 const TestIAVideo = () => {
   const videoRef = useRef(null);
@@ -18,7 +19,7 @@ const TestIAVideo = () => {
   }, []);
 
   useEffect(() => {
-    ctxRef.current = canvasRef.current.getContext('2d');
+    ctxRef.current = canvasRef.current.getContext("2d");
     const interval = setInterval(() => {
       detectObjects();
     }, 500); // Adjust the interval as needed
@@ -41,14 +42,20 @@ const TestIAVideo = () => {
     const canvas = canvasRef.current;
     canvas.width = videoRef.current.videoWidth;
     canvas.height = videoRef.current.videoHeight;
-    ctxRef.current.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
+    ctxRef.current.drawImage(
+      videoRef.current,
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
 
     // Perform object detection
     const predictions = await modelRef.current.detect(canvas);
     console.log(predictions);
 
     // Draw the predictions
-    predictions.forEach(prediction => {
+    predictions.forEach((prediction) => {
       const [x, y, width, height] = prediction.bbox;
       ctxRef.current.beginPath();
       ctxRef.current.rect(x, y, width, height);
@@ -66,17 +73,28 @@ const TestIAVideo = () => {
 
   // Styles directement dans le composant
   const inputStyle = {
-    margin: '10px',
-    padding: '5px',
-    fontSize: '16px',
+    margin: "10px",
+    padding: "5px",
+    fontSize: "16px",
   };
 
   return (
-    <div>
-      <input type="file" accept="video/*" onChange={handleFileChange} style={inputStyle} />
-      <video ref={videoRef} controls />
-      <canvas ref={canvasRef} />
+    <div className="container">
+      <h1>Upload the video</h1>
+      <div className="flex-container">  
+        <input
+          type="file"
+          accept="video/*"
+          onChange={handleFileChange}
+          style={inputStyle}
+        />
+          <div className="video-container">
+        <video ref={videoRef} controls />
+        <canvas ref={canvasRef} />
+        </div>
+      </div>
     </div>
+      
   );
 };
 
