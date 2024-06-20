@@ -4,6 +4,7 @@ import { addItem, getItems, clearItems, deleteItem } from "../db.js";
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
 import "@tensorflow/tfjs";
 import { FaTrash } from "react-icons/fa";
+import { ImSpinner } from "react-icons/im";
 
 const HomePage = () => {
   
@@ -17,8 +18,8 @@ const HomePage = () => {
   const canvas = useRef(null);
   const predictions = useRef([]);
 
-  let width = 320; // Largeur de la vidéo
-  let height = 0; // On met 0 car la hauteur de la vidéo sera calculé au lancement de la vidéo, selon le format de la camera (4/3, 16/9 etc...)
+  let width = 320;
+  let height = 0;
 
   let contextCanvas;
 
@@ -59,25 +60,6 @@ const HomePage = () => {
       setIntervalID(resultIntervalID);
     }
   }, [isLaunched])
-
-    // // Ajout écouteur d'évenement sur si la caméra peut lire une vidéo
-    // video.current.addEventListener('canplay', (event) => {
-    //   if (!isStreaming) {
-    //     height = video.current.videoHeight / (video.current.videoWidth/width); // Corrige un bug de Firefox qui a besoin qu'un height soit spécifié
-          
-    //     if (isNaN(height)) { // Si la hauteure n'est pas un nombre
-    //       height = width / (4/3); // Allors on la définit comme étant à 3/4 de la largeur par défaut
-    //     }
-      
-    //     // On spécifie les attribut de la vidéo et du canvas
-    //     video.current.setAttribute('width', width);
-    //     video.current.setAttribute('height', height);
-    //     canvas.current.setAttribute('width', width);
-    //     canvas.current.setAttribute('height', height);
-    //     isStreaming = true; // On change le boolean à true pour dire que la caméra tourne
-    //   }
-    // }, false);
-
 
   const getCameraStream = () => {
     navigator.mediaDevices
@@ -145,11 +127,6 @@ const HomePage = () => {
     setItems(allItems);
   };
 
-  const handleClearItems = async () => {
-    await clearItems();
-    setItems([]);
-  };
-
   const handleDeleteItem = async (id) => {
     await deleteItem(id);
     const updatedItems = await getItems();
@@ -158,31 +135,32 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="conteiner">
+      <div className="container">
         <h1>Camera AI Object Detection</h1>
-        <div className="videos">
-          <div>
-              <div className="camera">
-                <h2>Camera Video Stream</h2>
-                <video ref={video} id="video" width={320} height={320} />
-              </div>
-             
-             {!loading ? 
-                  <button className="button_camera" onClick={() => setIsLaunched(!isLaunched)}>
-                    {isLaunched ? "Stop" : "Launch" }
-                  </button>
-                : 
-                  <p>Chargemnet...</p>
-              }
+        {!loading ? 
+          <div className="videos">
+            <div>
+                <div className="camera">
+                  <h2>Camera Video Stream</h2>
+                  <video ref={video} id="video" width={320} height={320} />
+                </div>
+              
+                    <button className="button_camera" onClick={() => setIsLaunched(!isLaunched)}>
+                      {isLaunched ? "Stop" : "Launch" }
+                    </button>
+            </div>
+            <div className="detection">
+              <h2>AI Detection Canvas</h2>
+              <canvas ref={canvas} id="canvas"></canvas>
+              <button className="button_camera" onClick={captureAndStorePrediction}>
+                Capture Predictions
+              </button>
+            </div>
           </div>
-          <div className="detection">
-            <h2>AI Detection Canvas</h2>
-            <canvas ref={canvas} id="canvas"></canvas>
-            <button className="button_camera" onClick={captureAndStorePrediction}>
-              Capture Predictions
-            </button>
-          </div>
-        </div>
+        : 
+          <div className="divSpinner"><ImSpinner size={200} className="spin" /></div>
+        }
+
         <div className="store">
           <h2>Captures screenshots storage</h2>
           <div>
@@ -193,7 +171,7 @@ const HomePage = () => {
                   {item.predictions.map((prediction, index) => (
                     <li key={index}>
                       <strong>{prediction.class}</strong> with{" "}
-                      {prediction.score.toFixed(2)}%
+                      {(prediction.score * 100).toFixed(0)}%
                     </li>
                   ))}
                 </ul>
