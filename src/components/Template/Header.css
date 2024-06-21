@@ -1,9 +1,17 @@
 
   .header {
     background-color: var(--bg-color-header);
-    padding: 20px 30px;
-    display: flex;
-    align-items: center;
+
+    .header-content {
+      padding: 16px 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    a {
+      font-weight: bold;
+    }
+
   }
   
   .header_container {

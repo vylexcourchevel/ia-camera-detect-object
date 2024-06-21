@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { addItem, getItems, clearItems, deleteItem } from "../../db.js";
+import { addItem, getItems, clearItems, deleteItem } from "../../db2.js";
 import "./TestIndexesDB.css";
 
 const TestIndexesDB = () => {
@@ -51,8 +51,8 @@ const TestIndexesDB = () => {
   };
 
   return (
-    <div className="container">
-      <h1>IndexedDB Image and Text Storage</h1>
+    <div className="container main-container">
+      <h1>STORAGE ON IndexedDB</h1>
       <div className="input-container">
         <input type="file" onChange={handleFileChange} />
         <input

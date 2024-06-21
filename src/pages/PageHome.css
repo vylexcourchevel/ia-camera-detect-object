@@ -7,21 +7,30 @@ h2 {
   text-align: center;
 }
 
-@media (min-width: 768px) {
-  .videos {
-    display: flex;
-  }
-}
-
 .videos {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-bottom: 20px;
   padding-top: 32px;
   padding-bottom: 32px;
+  gap: 16px;
+}
+
+
+@media screen and (min-width: 768px) {
+  .videos {
+    flex-direction: row;
+  }
 }
 
 .camera,
 .detection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 0 10px;
 }
 

@@ -1,22 +1,29 @@
-#root{
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
 :root {
   font-size: 1rem;
-}
-:root {
   --text-color: #212121;
-  --bg-color-header:  #BF2995;
-  --accent-color: #F5721F;
-  --accent-color-hover: #E91363;
+  --bg-color-header: #bf2995;
+  --accent-color: #f5721f;
+  --accent-color-hover: #e91363;
   --main-background-color: #ffffff;
-  --frame-background-color: #f5f4fa;
+  --frame-background-color: #efefef;
   --border-color: #ececec;
   --input-border-color: #ccc;
   --border: #afb1b8;
   --input-coor: rgba(33, 33, 33, 0.2);
+}
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  background-color: var(--frame-background-color);
+  color: var(--text-color);
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--frame-background-color);
 }
 
 *,
@@ -36,16 +43,17 @@ ul {
   padding: 0;
   margin: 0;
 }
+
 li {
   list-style: none;
 }
+
+
+/* MAIN CONTAINER */
+
 @media screen and (min-width: 480px) {
   .container {
     margin: 0 auto;
-    padding: 20px;
-    background-color: var(--main-background-color);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
     width: 480px;
   }
 }
@@ -62,13 +70,21 @@ li {
   }
 }
 
+.main-container {
+  padding: 20px;
+  background-color: var(--main-background-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  min-height: 80vh;
+
 .section {
   padding: 20px;
   text-align: center;
 }
+
 .padding {
   padding: 10px;
 }
+
 @media screen and (min-width: 768px) {
   .tablet {
     display: none;
@@ -76,6 +92,7 @@ li {
     display: block;
   }
 }
+
 @media screen and (min-width: 768px) {
   .flex {
     display: flex;
@@ -83,26 +100,24 @@ li {
     align-items: center;
   }
 }
-body {
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: 400;
-  background-color: var(--main-background-color);
-  color: var(--text-color);
-}
+
 h1,
 h2,
 h3 {
   font-family: "Nunito Sans", sans-serif;
   font-weight: 600;
 }
+
 header {
   border-bottom: 1px solid var(--border-color);
 }
+
 img {
   display: block;
   max-width: 100%;
   height: auto;
 }
+
 .hidden {
   position: absolute;
   width: 1px;
@@ -115,5 +130,3 @@ img {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
-
-
