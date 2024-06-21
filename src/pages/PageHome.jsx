@@ -9,7 +9,6 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
 const HomePage = () => {
-  
   const [items, setItems] = useState([]);
   const [isLaunched, setIsLaunched] = useState();
   const [modelAI, setModelAI] = useState(null);
@@ -29,7 +28,7 @@ const HomePage = () => {
     const init = async () => {
       const resultModelAI = await cocoSsd.load();
       setModelAI(resultModelAI);
-      setLoading(false)
+      setLoading(false);
     };
     init();
 
@@ -54,14 +53,14 @@ const HomePage = () => {
         canvas.current.width,
         canvas.current.height
       );
-    } else if(isLaunched === true) {
+    } else if (isLaunched === true) {
       getCameraStream();
       const resultIntervalID = setInterval(() => {
         detectObjects();
       }, 100);
       setIntervalID(resultIntervalID);
     }
-  }, [isLaunched])
+  }, [isLaunched]);
 
   const getCameraStream = () => {
     navigator.mediaDevices
@@ -138,11 +137,12 @@ const HomePage = () => {
     confirmAlert({
       customUI: ({ onClose }) => {
         return (
-          <div className="custom-ui"
-          style={{
-            border:"solid 1px",
-            padding:"20px"
-          }}
+          <div
+            className="custom-ui"
+            style={{
+              border: "solid 1px",
+              padding: "20px",
+            }}
           >
             <h1>Confirm to delete</h1>
             <p>Are you sure you want to delete this item?</p>
@@ -183,34 +183,38 @@ const HomePage = () => {
     });
   };
 
-
   return (
     <>
-      <div className="container">
-        <h1>Camera AI Object Detection</h1>
-        {!loading ? 
+      <div className="container main-container">
+        <h1>CAMERA AI OBJECT DETECTION</h1>
+        {!loading ? (
           <div className="videos">
-            <div>
-                <div className="camera">
-                  <h2>Camera Video Stream</h2>
-                  <video ref={video} id="video" width={320} height={320} />
-                </div>
-              
-                    <button className="button_camera" onClick={() => setIsLaunched(!isLaunched)}>
-                      {isLaunched ? "Stop" : "Launch" }
-                    </button>
+            <div className="camera">
+              <h2>Camera Video Stream</h2>
+              <video ref={video} id="video" width={320} height={320} />
+              <button
+                className="button_camera"
+                onClick={() => setIsLaunched(!isLaunched)}
+              >
+                {isLaunched ? "Stop" : "Launch"}
+              </button>
             </div>
             <div className="detection">
               <h2>AI Detection Canvas</h2>
               <canvas ref={canvas} id="canvas"></canvas>
-              <button className="button_camera" onClick={captureAndStorePrediction}>
+              <button
+                className="button_camera"
+                onClick={captureAndStorePrediction}
+              >
                 Capture Predictions
               </button>
             </div>
           </div>
-        : 
-          <div className="divSpinner"><ImSpinner size={200} className="spin" /></div>
-        }
+        ) : (
+          <div className="divSpinner">
+            <ImSpinner size={200} className="spin" />
+          </div>
+        )}
 
         <div className="store">
           <h2>Captures screenshots storage</h2>

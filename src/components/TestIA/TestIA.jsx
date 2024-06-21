@@ -60,17 +60,17 @@ const TestIA = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Upload the Picture</h1>
-      <div className="flex-container">
-        <input
-          type="file"
-          accept="image/*"
-          ref={fileInputRef}
-          onChange={handleFileChange}
-        />
-        <canvas ref={canvasRef} id ="canvas1" />
-      </div>
+    <div className="container main-container">
+        <h1>UPLOAD A PICTURE</h1>
+        <div className="flex-container">
+          <input
+            type="file"
+            accept="image/*"
+            ref={fileInputRef}
+            onChange={handleFileChange}
+          />
+          <canvas ref={canvasRef} id ="canvas1" />
+        </div>
     </div>
   );
 };

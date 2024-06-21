@@ -79,22 +79,21 @@ const TestIAVideo = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Upload the video</h1>
-      <div className="flex-container">  
+    <div className="main-container container">
+      <h1>UPLOAD A VIDEO</h1>
+      <div className="flex-container">
         <input
           type="file"
           accept="video/*"
           onChange={handleFileChange}
           style={inputStyle}
         />
-          <div className="video-container">
-        <video ref={videoRef} controls />
-        <canvas ref={canvasRef} />
+        <div className="video-container">
+          <video ref={videoRef} controls />
+          <canvas ref={canvasRef} />
         </div>
       </div>
     </div>
-      
   );
 };
 
